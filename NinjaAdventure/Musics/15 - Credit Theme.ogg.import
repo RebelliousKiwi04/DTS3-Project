@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/15 - Credit Theme.ogg-2030ec6e460e6d533501d68f59c5ac58.oggstr"
+
+[deps]
+
+source_file="res://NinjaAdventure/Musics/15 - Credit Theme.ogg"
+dest_files=[ "res://.import/15 - Credit Theme.ogg-2030ec6e460e6d533501d68f59c5ac58.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

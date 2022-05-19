@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/11 - Clearing.ogg-f71a1653f015ac3d658b1bda68066eab.oggstr"
+
+[deps]
+
+source_file="res://NinjaAdventure/Musics/11 - Clearing.ogg"
+dest_files=[ "res://.import/11 - Clearing.ogg-f71a1653f015ac3d658b1bda68066eab.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

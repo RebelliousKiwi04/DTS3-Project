@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Menu10.wav-966a5658a27c289efe9c9b8f9c425acf.sample"
+
+[deps]
+
+source_file="res://NinjaAdventure/Sounds/Menu/Menu10.wav"
+dest_files=[ "res://.import/Menu10.wav-966a5658a27c289efe9c9b8f9c425acf.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

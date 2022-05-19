@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Sword.wav-87e3e561690d98c6723c602bc65c8a79.sample"
+
+[deps]
+
+source_file="res://NinjaAdventure/Sounds/Game/Sword.wav"
+dest_files=[ "res://.import/Sword.wav-87e3e561690d98c6723c602bc65c8a79.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

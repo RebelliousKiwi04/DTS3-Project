@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/18 - Aquatic.ogg-dbff43088426cbb3af73153f995affa8.oggstr"
+
+[deps]
+
+source_file="res://NinjaAdventure/Musics/18 - Aquatic.ogg"
+dest_files=[ "res://.import/18 - Aquatic.ogg-dbff43088426cbb3af73153f995affa8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

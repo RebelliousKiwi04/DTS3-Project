@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Hit6.wav-f94ef229acbb60295b0b2eccea4f5fcd.sample"
+
+[deps]
+
+source_file="res://NinjaAdventure/Sounds/Game/Hit6.wav"
+dest_files=[ "res://.import/Hit6.wav-f94ef229acbb60295b0b2eccea4f5fcd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/5 - Peaceful.ogg-312d888d72e8d8cefe1cbb070b9e7721.oggstr"
+
+[deps]
+
+source_file="res://NinjaAdventure/Musics/5 - Peaceful.ogg"
+dest_files=[ "res://.import/5 - Peaceful.ogg-312d888d72e8d8cefe1cbb070b9e7721.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

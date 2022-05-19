@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Fireball2.wav-e7c0906fa9917cae2445cd5a494dec21.sample"
+
+[deps]
+
+source_file="res://NinjaAdventure/Sounds/Game/Fireball2.wav"
+dest_files=[ "res://.import/Fireball2.wav-e7c0906fa9917cae2445cd5a494dec21.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
