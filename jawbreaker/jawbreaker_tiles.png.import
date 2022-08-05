@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/TilesetWater.png-ce2a367f8dcda222aa0a68ea3a16486c.stex"
+path="res://.import/jawbreaker_tiles.png-1abf4ebb051247c1112b24652f02f6f2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://NinjaAdventure/Backgrounds/Tilesets/TilesetWater.png"
-dest_files=[ "res://.import/TilesetWater.png-ce2a367f8dcda222aa0a68ea3a16486c.stex" ]
+source_file="res://jawbreaker/jawbreaker_tiles.png"
+dest_files=[ "res://.import/jawbreaker_tiles.png-1abf4ebb051247c1112b24652f02f6f2.stex" ]
 
 [params]
 
