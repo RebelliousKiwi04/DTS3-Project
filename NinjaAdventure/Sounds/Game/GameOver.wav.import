@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/GameOver.wav-4759958a4d7470312bd9111385f26730.sample"
+
+[deps]
+
+source_file="res://NinjaAdventure/Sounds/Game/GameOver.wav"
+dest_files=[ "res://.import/GameOver.wav-4759958a4d7470312bd9111385f26730.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Gold3.wav-29c777d6aed46ea4a088240703558cf7.sample"
+
+[deps]
+
+source_file="res://NinjaAdventure/Sounds/Game/Gold3.wav"
+dest_files=[ "res://.import/Gold3.wav-29c777d6aed46ea4a088240703558cf7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

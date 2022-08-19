@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Hit3.wav-2354cc8f566c085ecf083f078a6525ee.sample"
+
+[deps]
+
+source_file="res://NinjaAdventure/Sounds/Game/Hit3.wav"
+dest_files=[ "res://.import/Hit3.wav-2354cc8f566c085ecf083f078a6525ee.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

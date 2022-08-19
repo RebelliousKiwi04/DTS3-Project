@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/12 - Temple.ogg-cb1d578b0dbae599e10cab434596850b.oggstr"
+
+[deps]
+
+source_file="res://NinjaAdventure/Musics/12 - Temple.ogg"
+dest_files=[ "res://.import/12 - Temple.ogg-cb1d578b0dbae599e10cab434596850b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

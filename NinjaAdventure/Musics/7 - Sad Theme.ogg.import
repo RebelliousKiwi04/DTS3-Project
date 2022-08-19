@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/7 - Sad Theme.ogg-4f071a569cab02d07f44e69fc1857c4c.oggstr"
+
+[deps]
+
+source_file="res://NinjaAdventure/Musics/7 - Sad Theme.ogg"
+dest_files=[ "res://.import/7 - Sad Theme.ogg-4f071a569cab02d07f44e69fc1857c4c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

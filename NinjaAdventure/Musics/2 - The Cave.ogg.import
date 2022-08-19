@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/2 - The Cave.ogg-316e201ab08b4b2dbaa19b6a0e7ecc78.oggstr"
+
+[deps]
+
+source_file="res://NinjaAdventure/Musics/2 - The Cave.ogg"
+dest_files=[ "res://.import/2 - The Cave.ogg-316e201ab08b4b2dbaa19b6a0e7ecc78.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
