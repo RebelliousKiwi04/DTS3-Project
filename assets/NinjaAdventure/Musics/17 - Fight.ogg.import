@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/17 - Fight.ogg-0ef7c4b201a25b63a5b23a5ca18547c6.oggstr"
+
+[deps]
+
+source_file="res://assets/NinjaAdventure/Musics/17 - Fight.ogg"
+dest_files=[ "res://.import/17 - Fight.ogg-0ef7c4b201a25b63a5b23a5ca18547c6.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

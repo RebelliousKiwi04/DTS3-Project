@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/9 - Quiet.ogg-fa8f990c47f6c776ab790e26278b54d6.oggstr"
+
+[deps]
+
+source_file="res://assets/NinjaAdventure/Musics/9 - Quiet.ogg"
+dest_files=[ "res://.import/9 - Quiet.ogg-fa8f990c47f6c776ab790e26278b54d6.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Explosion2.wav-4a6ef2b8cf5ee0a2a245bb9d4d58fd6c.sample"
+
+[deps]
+
+source_file="res://assets/NinjaAdventure/Sounds/Game/Explosion2.wav"
+dest_files=[ "res://.import/Explosion2.wav-4a6ef2b8cf5ee0a2a245bb9d4d58fd6c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

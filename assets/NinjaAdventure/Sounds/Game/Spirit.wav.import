@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Spirit.wav-0df2c0dc69ec2dd99065f4bf7ff0ccae.sample"
+
+[deps]
+
+source_file="res://assets/NinjaAdventure/Sounds/Game/Spirit.wav"
+dest_files=[ "res://.import/Spirit.wav-0df2c0dc69ec2dd99065f4bf7ff0ccae.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
