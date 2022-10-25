@@ -6,13 +6,15 @@ signal playerBulletFired(bullet, position, direction)
 export (PackedScene) var bullet
 export (int) var speed = 100
 
+var health := 100
+
 onready var end_of_gun = $EndOfGun
 onready var gun_dir = $GunDirection
 onready var attackCooldown = $AttackCooldown
 onready var animationPlayer = $AnimationPlayer
+
 func _ready() -> void:
 	pass
-
 
 func _process(_delta: float) -> void:
 	var movement_dir := Vector2.ZERO
@@ -45,6 +47,12 @@ func shoot() -> void:
 	emit_signal("playerBulletFired", bullet_instance, end_of_gun.global_position, direction)
 	animationPlayer.play("MuzzleFlash")
 
-#May be redundant, but will keep in case more collectible items are added later
+#May be redundant, but will keep in case collectible items are added later
 func _on_AttackCooldown_timeout():
 	attackCooldown.stop()
+	
+	
+func handle_hit():
+	health-=20
+	print("player hit", health)
+	
