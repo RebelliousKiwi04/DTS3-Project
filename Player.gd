@@ -8,7 +8,8 @@ export (int) var speed = 100
 
 onready var end_of_gun = $EndOfGun
 onready var gun_dir = $GunDirection
-
+onready var attackCooldown = $AttackCooldown
+onready var animationPlayer = $AnimationPlayer
 func _ready() -> void:
 	pass
 
@@ -33,11 +34,17 @@ func _process(_delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("shoot"):
-		shoot()
+		if attackCooldown.is_stopped():
+			shoot()
+			attackCooldown.start()
 
 
 func shoot() -> void:
 	var bullet_instance = bullet.instance()
 	var direction = (gun_dir.global_position-end_of_gun.global_position).normalized()
 	emit_signal("playerBulletFired", bullet_instance, end_of_gun.global_position, direction)
-	
+	animationPlayer.play("MuzzleFlash")
+
+#May be redundant, but will keep in case more collectible items are added later
+func _on_AttackCooldown_timeout():
+	attackCooldown.stop()
