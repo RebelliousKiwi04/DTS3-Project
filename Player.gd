@@ -26,5 +26,10 @@ func _process(_delta: float) -> void:
 	look_at(get_global_mouse_position())
 	
 
-#func _unhandled_input(event: InputEvent) -> void:
-#	pass
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_released("shoot"):
+		pass
+
+
+func shoot() -> void:
+	pass
