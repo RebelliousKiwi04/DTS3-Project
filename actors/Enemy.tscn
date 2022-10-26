@@ -24,3 +24,5 @@ shape = SubResource( 1 )
 
 [node name="Weapon" parent="." instance=ExtResource( 4 )]
 position = Vector2( 24, 12 )
+
+[node name="AIHandler" type="Node2D" parent="."]
