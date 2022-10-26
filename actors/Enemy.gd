@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
-var health :=100
+onready var enemyHealth = $HealthHandler
 
 func handle_hit():
-	health-=20
-	print("Enemy Hit!", health)
-	if health <=0:
+	enemyHealth.health-=20
+	print("Enemy Hit!", enemyHealth.health)
+	if enemyHealth.health <=0:
 		queue_free()
