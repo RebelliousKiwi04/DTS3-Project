@@ -15,13 +15,25 @@ _global_script_classes=[ {
 "path": "res://weapons/Bullet.gd"
 }, {
 "base": "KinematicBody2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://actors/Enemy.gd"
+}, {
+"base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://actors/Player.gd"
+}, {
+"base": "Node2D",
+"class": "Weapon",
+"language": "GDScript",
+"path": "res://weapons/Weapon.gd"
 } ]
 _global_script_class_icons={
 "Bullet": "",
-"Player": ""
+"Enemy": "",
+"Player": "",
+"Weapon": ""
 }
 
 [application]
@@ -29,6 +41,10 @@ _global_script_class_icons={
 config/name="Topdownshooter"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+globals="*res://globals/globals.gd"
 
 [display]
 
