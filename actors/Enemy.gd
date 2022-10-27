@@ -6,6 +6,9 @@ onready var ai = $AIHandler
 onready var weapon = $Weapon
 
 
+export (int) var speed = 100
+
+
 func _ready():
 	#Dependency injection was easiest for this, didn;t want to rely on tree
 	ai.initialize(self, weapon)
@@ -16,3 +19,11 @@ func handle_hit():
 	print("Enemy Hit!", enemyHealth.health)
 	if enemyHealth.health <=0:
 		queue_free()
+
+
+func rotate_towards(location):
+	rotation = lerp(rotation, global_position.direction_to(location).angle(), 0.1)
+
+
+func velocity_towards(location):
+	return global_position.direction_to(location)*speed

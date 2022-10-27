@@ -12,21 +12,37 @@ enum State {
 
 
 onready var playerDetectionZone = $PlayerDetectionZone
+onready var patrolTimer = $PatrolTimer
 
 
-var current_state = State.PATROL setget set_state
+var current_state = null setget set_state
 var player: Player = null
 var weapon: Weapon = null
 var actor: Enemy = null
 
-func _process(delta) -> void:
+# PATROL STATE
+var origin: Vector2 = global_position
+var patrol_location := Vector2.ZERO
+var patrol_location_reached := false
+var actorVelocity := Vector2.ZERO
+
+
+func _physics_process(delta) -> void:
 	match current_state:
 		State.PATROL:
-			pass
+			if not patrol_location_reached:
+				actor.move_and_slide(actorVelocity)
+				actor.rotate_towards(patrol_location)
+				if  actor.global_position.distance_to(patrol_location) <5:
+					patrol_location_reached = true
+					actorVelocity = Vector2.ZERO
+					patrolTimer.start()
 		State.ENGAGE:
 			if player != null and weapon != null:
-				actor.rotation = actor.global_position.direction_to(player.global_position).angle()
-				weapon.shoot()
+				var angleToPlayer = actor.global_position.direction_to(player.global_position).angle()
+				actor.rotate_towards(angleToPlayer)
+				if abs(actor.rotation-angleToPlayer)< 0.1:
+					weapon.shoot()
 			else:
 				print("Weapon or player null in engage state")
 		_:
@@ -37,14 +53,20 @@ func _process(delta) -> void:
 func initialize(actor: Enemy, weapon: Weapon):
 	self.actor = actor
 	self.weapon = weapon
-
+	set_state(State.PATROL)
 
 func set_state(new_state: int):
 	if new_state == current_state:
 		return
+	
+	if new_state == State.PATROL:
+		patrolTimer.start()
+		origin = actor.global_position
+		patrol_location_reached = true
+		
 	current_state = new_state
 	emit_signal("state_changed", new_state)
-
+	
 
 func get_new_target():
 	pass
@@ -54,3 +76,18 @@ func _on_PlayerDetectionZone_body_entered(body):
 	if body.is_in_group("player"):
 		set_state(State.ENGAGE)
 		player = body
+
+
+func _on_PlayerDetectionZone_body_exited(body):
+	if player and body == player:
+		set_state(State.PATROL)
+		player = null
+
+
+func patrolTimer_timeout():
+	var patrol_range = 50
+	var random_x = rand_range(-patrol_range, patrol_range)
+	var random_y = rand_range(-patrol_range, patrol_range)
+	patrol_location = Vector2(random_x, random_y) + origin
+	patrol_location_reached = false
+	actorVelocity = actor.velocity_towards(patrol_location)

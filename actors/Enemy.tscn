@@ -37,4 +37,10 @@ script = ExtResource( 5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AIHandler/PlayerDetectionZone"]
 shape = SubResource( 2 )
 
+[node name="PatrolTimer" type="Timer" parent="AIHandler"]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="body_entered" from="AIHandler/PlayerDetectionZone" to="AIHandler" method="_on_PlayerDetectionZone_body_entered"]
+[connection signal="body_exited" from="AIHandler/PlayerDetectionZone" to="AIHandler" method="_on_PlayerDetectionZone_body_exited"]
+[connection signal="timeout" from="AIHandler/PatrolTimer" to="AIHandler" method="patrolTimer_timeout"]
