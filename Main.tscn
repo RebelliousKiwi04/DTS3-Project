@@ -11,6 +11,10 @@ script = ExtResource( 4 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 49, 43 )
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+smoothing_enabled = true
+
 [node name="Enemy" parent="." instance=ExtResource( 5 )]
 position = Vector2( 409, 132 )
 

@@ -28,6 +28,10 @@ func _physics_process(_delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("shoot"):
 		weapon.shoot()
+	if event.is_action_released("reload"):
+		weapon.start_reload()
+
+	
 
 func handle_hit():
 	playerHealth.health-=20

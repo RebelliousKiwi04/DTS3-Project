@@ -39,8 +39,8 @@ func _physics_process(delta) -> void:
 					patrolTimer.start()
 		State.ENGAGE:
 			if player != null and weapon != null:
+				actor.rotate_towards(player.global_position)
 				var angleToPlayer = actor.global_position.direction_to(player.global_position).angle()
-				actor.rotate_towards(angleToPlayer)
 				if abs(actor.rotation-angleToPlayer)< 0.1:
 					weapon.shoot()
 			else:
@@ -54,7 +54,8 @@ func initialize(actor: Enemy, weapon: Weapon):
 	self.actor = actor
 	self.weapon = weapon
 	set_state(State.PATROL)
-
+	weapon.connect("weapon_out_of_ammo", self, "handle_reload")
+	
 func set_state(new_state: int):
 	if new_state == current_state:
 		return
@@ -91,3 +92,7 @@ func patrolTimer_timeout():
 	patrol_location = Vector2(random_x, random_y) + origin
 	patrol_location_reached = false
 	actorVelocity = actor.velocity_towards(patrol_location)
+
+
+func handle_reload():
+	weapon.start_reload()
