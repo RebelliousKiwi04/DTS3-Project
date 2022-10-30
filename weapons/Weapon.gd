@@ -3,7 +3,7 @@ class_name Weapon
 
 
 signal weapon_out_of_ammo
-
+signal ammo_values_changed(ammo, new_max_ammo)
 
 export (PackedScene) var bullet
 
@@ -26,6 +26,7 @@ func shoot() -> void:
 		animationPlayer.play("MuzzleFlash")
 		attackCooldown.start()
 		current_ammo-=1
+		emit_signal("ammo_values_changed", current_ammo, max_ammo)
 		if current_ammo == 0:
 			emit_signal("weapon_out_of_ammo")
 	
@@ -35,6 +36,7 @@ func start_reload():
 	
 func _stop_reload():
 	current_ammo = max_ammo
+	emit_signal("ammo_values_changed", current_ammo, max_ammo)
 		
 #May be redundant, but will keep in case collectible items are added later
 func _on_AttackCooldown_timeout():

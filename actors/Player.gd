@@ -2,6 +2,10 @@ extends KinematicBody2D
 
 class_name Player
 
+
+signal player_health_changed(new_health)
+
+
 export (int) var speed = 100
 
 onready var playerHealth = $HealthHandler
@@ -35,5 +39,5 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func handle_hit():
 	playerHealth.health-=20
-	print("player hit", playerHealth.health)
+	emit_signal("player_health_changed", playerHealth.health)
 	

@@ -21,7 +21,7 @@ var weapon: Weapon = null
 var actor: Enemy = null
 
 # PATROL STATE
-var origin: Vector2 = global_position
+var origin: Vector2 = Vector2.ZERO
 var patrol_location := Vector2.ZERO
 var patrol_location_reached := false
 var actorVelocity := Vector2.ZERO
@@ -79,12 +79,6 @@ func _on_PlayerDetectionZone_body_entered(body):
 		player = body
 
 
-func _on_PlayerDetectionZone_body_exited(body):
-	if player and body == player:
-		set_state(State.PATROL)
-		player = null
-
-
 func patrolTimer_timeout():
 	var patrol_range = 50
 	var random_x = rand_range(-patrol_range, patrol_range)
@@ -96,3 +90,10 @@ func patrolTimer_timeout():
 
 func handle_reload():
 	weapon.start_reload()
+
+
+func _on_PlayerEngagementZone_body_exited(body):
+	if player and body == player:
+		set_state(State.PATROL)
+		player = null
+
