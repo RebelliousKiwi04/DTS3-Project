@@ -4,7 +4,7 @@ class_name Player
 
 
 signal player_health_changed(new_health)
-
+signal player_died
 
 export (int) var speed = 100
 
@@ -35,9 +35,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("reload"):
 		weapon.start_reload()
 
-	
+func die():
+	emit_signal("player_died")
 
 func handle_hit():
 	playerHealth.health-=20
+	if playerHealth.health <=0:
+		die()
 	emit_signal("player_health_changed", playerHealth.health)
 	

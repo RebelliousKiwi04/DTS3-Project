@@ -4,7 +4,7 @@ extends CanvasLayer
 onready var health_bar = $"MarginContainer/Rows/Bottom Row/HealthContainer/HealthBar"
 onready var current_ammo = $"MarginContainer/Rows/Bottom Row/Ammo/CurrentAmmo"
 onready var max_ammo = $"MarginContainer/Rows/Bottom Row/Ammo/MaxAmmo"
-
+onready var health_tween = $"MarginContainer/Rows/Bottom Row/HealthContainer/health_tween"
 
 var player: Player = null
 
@@ -18,7 +18,16 @@ func set_active_player(actor: Player) -> void:
 	player.weapon.connect("ammo_values_changed", self, "set_ammo_values")
 	
 func set_new_health_value(new_health: int) -> void:
-	health_bar.value = new_health
+	#Values for health bar anims
+	var original_color = Color("#7a3333")
+	var highlight_color = Color("#ff7e7e")
+	var bar_style = health_bar.get("custom_styles/fg")
+	#Health Bar anims using interpolations, whilst setting value
+	health_tween.interpolate_property(health_bar, "value", health_bar.value, new_health, 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	health_tween.interpolate_property(bar_style, "bg_color", original_color, highlight_color, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	health_tween.interpolate_property(bar_style, "bg_color", highlight_color, original_color, 0.2, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0.2)
+	health_tween.start()
+	
 	
 func set_ammo_values(ammo, new_max_ammo):
 	current_ammo.text = str(ammo)
