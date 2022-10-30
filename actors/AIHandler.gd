@@ -31,6 +31,8 @@ func _physics_process(delta) -> void:
 	match current_state:
 		State.PATROL:
 			if not patrol_location_reached:
+				print("Patrol Location: ", patrol_location)
+				print("Current Location: ", actor.global_position)
 				actor.move_and_slide(actorVelocity)
 				actor.rotate_towards(patrol_location)
 				if  actor.global_position.distance_to(patrol_location) <5:
@@ -53,6 +55,7 @@ func _physics_process(delta) -> void:
 func initialize(actor: Enemy, weapon: Weapon):
 	self.actor = actor
 	self.weapon = weapon
+	origin = self.actor.global_position
 	set_state(State.PATROL)
 	weapon.connect("weapon_out_of_ammo", self, "handle_reload")
 	
