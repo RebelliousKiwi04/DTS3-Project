@@ -15,4 +15,4 @@ func _on_StartButton_pressed():
 
 
 func _on_HighScoreButton_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene("res://HighScoreScreen.tscn")
