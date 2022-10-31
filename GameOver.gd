@@ -1,5 +1,5 @@
 extends CanvasLayer
-
+#Game Over Screen script
 onready var scoreLabel = $PanelContainer/MarginContainer/Rows/ScoreLabel
 
 #Loads and adds score to saved data

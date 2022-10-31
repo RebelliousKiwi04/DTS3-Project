@@ -55,18 +55,30 @@ size_flags_vertical = 3
 
 [node name="ScoreLabel" type="Label" parent="MarginContainer/Rows/Top Row"]
 margin_top = 18.0
-margin_right = 940.0
+margin_right = 880.0
 margin_bottom = 66.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
 text = "Score: 0"
 
 [node name="InfoLabel" type="Label" parent="MarginContainer/Rows/Top Row"]
-margin_left = 944.0
+margin_left = 884.0
 margin_top = 18.0
-margin_right = 944.0
+margin_right = 884.0
 margin_bottom = 66.0
 custom_fonts/font = ExtResource( 2 )
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/Rows/Top Row"]
+margin_left = 888.0
+margin_right = 944.0
+margin_bottom = 85.0
+
+[node name="MenuButton" type="Button" parent="MarginContainer/Rows/Top Row/CenterContainer"]
+margin_top = 15.0
+margin_right = 56.0
+margin_bottom = 69.0
+custom_fonts/font = ExtResource( 2 )
+text = "||"
 
 [node name="Middle Row" type="HBoxContainer" parent="MarginContainer/Rows"]
 margin_top = 89.0
@@ -135,4 +147,5 @@ text = "30"
 [node name="infoTimer" type="Timer" parent="."]
 wait_time = 3.0
 
+[connection signal="pressed" from="MarginContainer/Rows/Top Row/CenterContainer/MenuButton" to="." method="_on_MenuButton_pressed"]
 [connection signal="timeout" from="infoTimer" to="." method="_on_infoTimer_timeout"]

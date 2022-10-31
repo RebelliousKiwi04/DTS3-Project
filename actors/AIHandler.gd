@@ -32,12 +32,16 @@ var patrol_location := Vector2.ZERO
 var patrol_location_reached := false
 var actorVelocity := Vector2.ZERO
 
-
+#Variable to smooth out Hunt state transitions
 var player_in_body =false
 
+
 func _physics_process(delta) -> void:
+	#Effectively the same as a switch statement, handles AI 
 	match current_state:
+		#If state is patrol
 		State.PATROL:
+			#If location isn't reached, then get path, and move towards it
 			if not patrol_location_reached:
 				var path = pathfinding.get_new_path(global_position, patrol_location)
 
@@ -52,7 +56,9 @@ func _physics_process(delta) -> void:
 					patrol_location_reached = true
 					actorVelocity = Vector2.ZERO
 					patrolTimer.start()
+		#Hunt state
 		State.HUNT:
+			#If enemy hasn't reached player position, then move towards player
 			if not enemy_pos_reached and enemy_pos != null:
 				var path = pathfinding.get_new_path(global_position, enemy_pos)
 
@@ -68,7 +74,9 @@ func _physics_process(delta) -> void:
 				else:
 					enemy_pos_reached = true
 					actorVelocity = Vector2.ZERO
+		#Engage state
 		State.ENGAGE:
+			#if player data isn't null, then move towards and engage enemy
 			if player != null and weapon != null:
 				var path = pathfinding.get_new_path(global_position, player.global_position)
 				actor.rotate_towards(player.global_position)
@@ -91,14 +99,15 @@ func _physics_process(delta) -> void:
 			print("Error found in enemy state, setting state to patrol", current_state)
 			set_state(State.PATROL)
 
-
+#Initialise AI
 func initialize(actor: Enemy, weapon: Weapon):
 	self.actor = actor
 	self.weapon = weapon
 	origin = self.actor.global_position
 	set_state(State.PATROL)
 	weapon.connect("weapon_out_of_ammo", self, "handle_reload")
-	
+
+#Handle setting of new state
 func set_state(new_state: int):
 	if new_state == current_state:
 		return
@@ -117,17 +126,18 @@ func set_state(new_state: int):
 	current_state = new_state
 	emit_signal("state_changed", new_state)
 	
-
+#Is redundant
 func get_new_target():
 	pass
 
-
+#If player enters detection body, engage player
 func _on_PlayerDetectionZone_body_entered(body):
 	if body.is_in_group("player"):
 		set_state(State.ENGAGE)
 		player = body
 		player_in_body = true
 
+#Identify new patrol location
 func patrolTimer_timeout():
 	var patrol_range = 150
 	var random_x = rand_range(-patrol_range, patrol_range)
@@ -136,11 +146,11 @@ func patrolTimer_timeout():
 	patrol_location_reached = false
 	
 
-
+#Is triggered by signal, handles reload
 func handle_reload():
 	weapon.start_reload()
 
-
+#If player exits engagement zone move to patrol
 func _on_PlayerEngagementZone_body_exited(body):
 	if player and body == player:
 		set_state(State.PATROL)

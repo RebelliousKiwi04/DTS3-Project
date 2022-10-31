@@ -1,7 +1,8 @@
 extends Node2D
+#Weapon class
 class_name Weapon
 
-
+#Weapon related signals
 signal weapon_out_of_ammo
 signal ammo_values_changed(ammo, new_max_ammo)
 
@@ -17,7 +18,7 @@ onready var gun_dir = $GunDirection
 onready var attackCooldown = $AttackCooldown
 onready var animationPlayer = $AnimationPlayer
 
-
+#Shoot function to emit bullet firing signal, and instance bullet
 func shoot() -> void:
 	if current_ammo != 0 and attackCooldown.is_stopped():
 		var bullet_instance = bullet.instance()
@@ -30,10 +31,11 @@ func shoot() -> void:
 		if current_ammo == 0:
 			emit_signal("weapon_out_of_ammo")
 	
-	
+#Start reload function
 func start_reload():
 	animationPlayer.play("reload")
 	
+#Stop reload, and adjust current ammo
 func _stop_reload():
 	current_ammo = max_ammo
 	emit_signal("ammo_values_changed", current_ammo, max_ammo)
