@@ -1,6 +1,7 @@
 extends Node2D
 
 const enemy = preload("res://actors//Enemy.tscn")
+const pauseMenu = preload("res://UI//PauseScreen.tscn")
 
 onready var bullet_manager = $BulletManager
 onready var player := $Player
@@ -23,7 +24,13 @@ func _ready():
 	gui.set_active_player(player)
 	
 	_on_HuntTimer_timeout()
-	
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_released("pause"):
+		get_tree().paused = true
+		add_child(pauseMenu.instance())
+
 	
 func spawn_enemies():
 	gui.set_info_label("Spawning Enemies")
