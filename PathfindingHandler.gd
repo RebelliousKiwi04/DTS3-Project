@@ -24,7 +24,11 @@ func update_nav_map():
 				var id = get_id_for_point(tile)
 				if astar.has_point(id):
 					astar.set_point_disabled(id, true)
-
+		if obstacle is KinematicBody2D:
+			var tile_coord = tilemap.world_to_map(obstacle.collision_shape.global_position)
+			var id = get_id_for_point(tile_coord)
+			if astar.has_point(id):
+				astar.set_point_disabled(id, true)
 
 func create_nav_map(tilemap: TileMap):
 	self.tilemap = tilemap

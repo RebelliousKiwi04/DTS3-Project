@@ -22,12 +22,12 @@ func _ready():
 	
 	player.connect("player_died", self, "handle_player_death")
 	gui.set_active_player(player)
+	
 	_on_HuntTimer_timeout()
 	
-func _physics_process(delta):
-	pass
 	
 func spawn_enemies():
+	gui.set_info_label("Spawning Enemies")
 	for i in range(0,5):
 		spawn_enemy(i)
 	

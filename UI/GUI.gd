@@ -6,12 +6,18 @@ onready var current_ammo = $"MarginContainer/Rows/Bottom Row/Ammo/CurrentAmmo"
 onready var max_ammo = $"MarginContainer/Rows/Bottom Row/Ammo/MaxAmmo"
 onready var health_tween = $"MarginContainer/Rows/Bottom Row/HealthContainer/health_tween"
 onready var score_label = $"MarginContainer/Rows/Top Row/ScoreLabel"
+onready var info_label = $"MarginContainer/Rows/Top Row/InfoLabel"
+onready var info_timer = $infoTimer
 
 var player: Player = null
 
 func set_score(score: int):
 	score_label.text = "Score: "+str(score)
-
+	
+func set_info_label(text):
+	info_label.text =text
+	info_timer.start()
+	
 func set_active_player(actor: Player) -> void:
 	player = actor
 	set_new_health_value(player.playerHealth.health)
@@ -35,3 +41,7 @@ func set_new_health_value(new_health: int) -> void:
 func set_ammo_values(ammo, new_max_ammo):
 	current_ammo.text = str(ammo)
 	max_ammo.text = str(new_max_ammo)
+
+
+func _on_infoTimer_timeout():
+	set_info_label("")
