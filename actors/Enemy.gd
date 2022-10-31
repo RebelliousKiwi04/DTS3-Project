@@ -19,7 +19,8 @@ func _ready():
 
 	
 func begin_hunt():
-	if str(ai.State) != str(ai.State.ENGAGE):
+	if ai.current_state != ai.State.ENGAGE:
+		print("Changing AI state to hunt")
 		ai.set_state(ai.State.HUNT)
 		HuntTimer.start()
 	
@@ -40,5 +41,6 @@ func velocity_towards(location):
 
 
 func _on_HuntTimer_timeout():
-	if str(ai.State) != str(ai.State.ENGAGE):
+	if ai.current_state != ai.State.ENGAGE:
+		print("Changing State to patrol")
 		ai.set_state(ai.State.PATROL)

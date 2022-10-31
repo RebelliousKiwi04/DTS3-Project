@@ -33,6 +33,8 @@ var patrol_location_reached := false
 var actorVelocity := Vector2.ZERO
 
 
+var player_in_body =false
+
 func _physics_process(delta) -> void:
 	match current_state:
 		State.PATROL:
@@ -101,13 +103,16 @@ func set_state(new_state: int):
 	if new_state == current_state:
 		return
 	
+	
 	if new_state == State.PATROL:
-		patrolTimer.start()
-		origin = actor.global_position
-		patrol_location_reached = true
+		if current_state != State.ENGAGE and player_in_body == false:
+			patrolTimer.start()
+			origin = actor.global_position
+			patrol_location_reached = true
 	if new_state == State.HUNT:
-		enemy_pos_reached = false
-		enemy_pos = player.global_position
+		if current_state != State.ENGAGE and player_in_body == false:
+			enemy_pos_reached = false
+			enemy_pos = player.global_position
 	
 	current_state = new_state
 	emit_signal("state_changed", new_state)
@@ -119,10 +124,9 @@ func get_new_target():
 
 func _on_PlayerDetectionZone_body_entered(body):
 	if body.is_in_group("player"):
-		print("Player Entered Body")
 		set_state(State.ENGAGE)
 		player = body
-
+		player_in_body = true
 
 func patrolTimer_timeout():
 	var patrol_range = 150
@@ -140,5 +144,5 @@ func handle_reload():
 func _on_PlayerEngagementZone_body_exited(body):
 	if player and body == player:
 		set_state(State.PATROL)
-		#player = null
+		player_in_body = false
 

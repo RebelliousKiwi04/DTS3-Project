@@ -10,7 +10,6 @@ onready var pathfinding = $PathfindingHandler
 onready var enemyspawns = $EnemySpawnPoints
 onready var enemyContainer = $EnemyContainer
 
-var score = 0
 var spawnpoints
 
 func _ready():
@@ -33,7 +32,7 @@ func spawn_enemies():
 	
 	
 func handle_player_death():
-	print("Handling Player Death")
+	get_tree().change_scene("res://GameOver.tscn")
 
 func spawn_enemy(spawnPoint):
 	var newEnemy = enemy.instance()
@@ -44,8 +43,8 @@ func spawn_enemy(spawnPoint):
 	newEnemy.connect("enemyDied", self, "handle_enemy_death")
 
 func handle_enemy_death():
-	score+=50
-	gui.set_score(score)
+	globals.score+=50
+	gui.set_score(globals.score)
 
 
 func _on_HuntTimer_timeout():
