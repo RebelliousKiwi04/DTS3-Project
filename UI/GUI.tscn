@@ -53,6 +53,13 @@ margin_bottom = 85.0
 mouse_filter = 2
 size_flags_vertical = 3
 
+[node name="ScoreLabel" type="Label" parent="MarginContainer/Rows/Top Row"]
+margin_top = 18.0
+margin_right = 176.0
+margin_bottom = 66.0
+custom_fonts/font = ExtResource( 2 )
+text = "Score: 0"
+
 [node name="Middle Row" type="HBoxContainer" parent="MarginContainer/Rows"]
 margin_top = 89.0
 margin_right = 944.0

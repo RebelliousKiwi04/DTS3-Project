@@ -14,8 +14,6 @@ func _physics_process(delta):
 func update_nav_map():
 	for point in astar.get_points():
 		astar.set_point_disabled(point, false)
-#		if should_display_grid:
-#			grid_rects[str(point)].color = enabled_color
 
 	var obstacles = get_tree().get_nodes_in_group("obstacles")
 
@@ -26,15 +24,7 @@ func update_nav_map():
 				var id = get_id_for_point(tile)
 				if astar.has_point(id):
 					astar.set_point_disabled(id, true)
-#					if should_display_grid:
-#						grid_rects[str(id)].color = disabled_color
-#		if obstacle is KinematicBody2D:
-#			var tile_coord = tilemap.world_to_map(obstacle.collision_shape.global_position)
-#			var id = get_id_for_point(tile_coord)
-#			if astar.has_point(id):
-#				astar.set_point_disabled(id, true)
-##				if should_display_grid:
-##					grid_rects[str(id)].color = disabled_color
+
 
 func create_nav_map(tilemap: TileMap):
 	self.tilemap = tilemap

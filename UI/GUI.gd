@@ -5,9 +5,12 @@ onready var health_bar = $"MarginContainer/Rows/Bottom Row/HealthContainer/Healt
 onready var current_ammo = $"MarginContainer/Rows/Bottom Row/Ammo/CurrentAmmo"
 onready var max_ammo = $"MarginContainer/Rows/Bottom Row/Ammo/MaxAmmo"
 onready var health_tween = $"MarginContainer/Rows/Bottom Row/HealthContainer/health_tween"
+onready var score_label = $"MarginContainer/Rows/Top Row/ScoreLabel"
 
 var player: Player = null
 
+func set_score(score: int):
+	score_label.text = "Score: "+str(score)
 
 func set_active_player(actor: Player) -> void:
 	player = actor
