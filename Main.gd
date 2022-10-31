@@ -30,3 +30,4 @@ func spawn_enemy():
 	add_child(newEnemy)
 	newEnemy.global_position = spawnpoints[0].global_position
 	newEnemy.ai.pathfinding = pathfinding
+	newEnemy.ai.player = player

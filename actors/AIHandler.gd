@@ -7,7 +7,8 @@ signal state_changed(new_state)
 #Finite State Machine states
 enum State {
 	PATROL,
-	ENGAGE
+	ENGAGE,
+	HUNT
 }
 
 
@@ -21,6 +22,10 @@ var weapon: Weapon = null
 var actor: Enemy = null
 var pathfinding: pathfinding
 
+#HUNT STATE
+var enemy_pos_reached = false
+var enemy_pos = null
+
 # PATROL STATE
 var origin: Vector2 = Vector2.ZERO
 var patrol_location := Vector2.ZERO
@@ -32,20 +37,52 @@ func _physics_process(delta) -> void:
 	match current_state:
 		State.PATROL:
 			if not patrol_location_reached:
-				print("Patrol Location: ", patrol_location)
-				print("Current Location: ", actor.global_position)
-				actor.move_and_slide(actorVelocity)
-				actor.rotate_towards(patrol_location)
-				if  actor.global_position.distance_to(patrol_location) <5:
+				var path = pathfinding.get_new_path(global_position, patrol_location)
+
+				if path.size()>1:
+					if actor.global_position.distance_to(patrol_location) <50:
+						patrol_location_reached = true
+					actorVelocity = actor.velocity_towards(path[1])
+					actor.rotate_towards(path[1])
+					actor.move_and_slide(actorVelocity)
+
+				else:
 					patrol_location_reached = true
 					actorVelocity = Vector2.ZERO
 					patrolTimer.start()
+		State.HUNT:
+			if not enemy_pos_reached and enemy_pos != null:
+				var path = pathfinding.get_new_path(global_position, enemy_pos)
+
+				if path.size()>1:
+					if actor.global_position.distance_to(enemy_pos) <150:
+						enemy_pos_reached = true
+						enemy_pos = null
+					else:
+						actorVelocity = actor.velocity_towards(path[1])
+						actor.rotate_towards(path[1])
+						actor.move_and_slide(actorVelocity)
+
+				else:
+					enemy_pos_reached = true
+					actorVelocity = Vector2.ZERO
 		State.ENGAGE:
 			if player != null and weapon != null:
+				var path = pathfinding.get_new_path(global_position, player.global_position)
 				actor.rotate_towards(player.global_position)
-				var angleToPlayer = actor.global_position.direction_to(player.global_position).angle()
-				if abs(actor.rotation-angleToPlayer)< 0.1:
-					weapon.shoot()
+				if path.size()>1:
+					if actor.global_position.distance_to(player.global_position) <200:
+						var angleToPlayer = actor.global_position.direction_to(player.global_position).angle()
+						if abs(actor.rotation-angleToPlayer)< 0.1:
+							weapon.shoot()
+					else:
+						actorVelocity = actor.velocity_towards(path[1])
+						actor.rotate_towards(path[1])
+						actor.move_and_slide(actorVelocity)
+				else:
+					var angleToPlayer = actor.global_position.direction_to(player.global_position).angle()
+					if abs(actor.rotation-angleToPlayer)< 0.1:
+						weapon.shoot()
 			else:
 				print("Weapon or player null in engage state")
 		_:
@@ -68,7 +105,10 @@ func set_state(new_state: int):
 		patrolTimer.start()
 		origin = actor.global_position
 		patrol_location_reached = true
-		
+	if new_state == State.HUNT:
+		enemy_pos_reached = false
+		enemy_pos = player.global_position
+	
 	current_state = new_state
 	emit_signal("state_changed", new_state)
 	
@@ -79,17 +119,18 @@ func get_new_target():
 
 func _on_PlayerDetectionZone_body_entered(body):
 	if body.is_in_group("player"):
+		print("Player Entered Body")
 		set_state(State.ENGAGE)
 		player = body
 
 
 func patrolTimer_timeout():
-	var patrol_range = 50
+	var patrol_range = 150
 	var random_x = rand_range(-patrol_range, patrol_range)
 	var random_y = rand_range(-patrol_range, patrol_range)
 	patrol_location = Vector2(random_x, random_y) + origin
 	patrol_location_reached = false
-	actorVelocity = actor.velocity_towards(patrol_location)
+	
 
 
 func handle_reload():
@@ -99,5 +140,5 @@ func handle_reload():
 func _on_PlayerEngagementZone_body_exited(body):
 	if player and body == player:
 		set_state(State.PATROL)
-		player = null
+		#player = null
 

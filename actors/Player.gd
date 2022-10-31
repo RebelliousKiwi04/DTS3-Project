@@ -10,7 +10,7 @@ export (int) var speed = 100
 
 onready var playerHealth = $HealthHandler
 onready var weapon = $Weapon
-
+onready var collision_shape = $CollisionShape2D
 
 func _physics_process(_delta: float) -> void:
 	var movement_dir := Vector2.ZERO

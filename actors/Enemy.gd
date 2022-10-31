@@ -4,9 +4,9 @@ class_name Enemy
 onready var enemyHealth = $HealthHandler
 onready var ai = $AIHandler
 onready var weapon = $Weapon
+onready var collision_shape = $CollisionShape2D
 
-
-export (int) var speed = 100
+export (int) var speed = 75
 
 
 func _ready():

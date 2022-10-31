@@ -15,7 +15,7 @@ radius = 314.078
 [sub_resource type="CircleShape2D" id=3]
 radius = 439.092
 
-[node name="Enemy" type="KinematicBody2D" groups=["enemy"]]
+[node name="Enemy" type="KinematicBody2D" groups=["enemy", "obstacles"]]
 position = Vector2( -52, 17 )
 script = ExtResource( 1 )
 
