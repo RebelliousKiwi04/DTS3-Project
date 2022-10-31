@@ -6,7 +6,9 @@ onready var scoreLabel = $PanelContainer/MarginContainer/Rows/ScoreLabel
 func _ready():
 	var scoreFile = File.new()
 	scoreFile.open("user://high_scores.dat", File.READ)
-	var scores = scoreFile.get_var()
+	var scores = []
+	if scoreFile.get_var():
+		scoreFile.get_var()
 	scoreFile.close()
 	scoreLabel.text = "Score: "+str(globals.score)
 	scores.append(globals.score)

@@ -6,11 +6,18 @@ onready var scoreLabel = $PanelContainer/MarginContainer/Rows/CenterContainer/VB
 func _ready():
 	var scoreFile = File.new()
 	scoreFile.open("user://high_scores.dat", File.READ)
-	var scores = scoreFile.get_var()
-	scoreFile.close()
-	scores.sort()
-	scores.invert()
-	print(scores)
+	
+	var scores = []
+	if scoreFile.get_var():
+		scores = scoreFile.get_var()
+		scoreFile.close()
+		scores.sort()
+		scores.invert()
+		print(scores)
+	else:
+		scoreFile.close()
+		scoreFile.open("user://high_scores.dat", File.WRITE)
+		scoreFile.close()
 	if scores.size() <=5:
 		for i in range(0,5-scores.size()):
 			scores.append(0)
