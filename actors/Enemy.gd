@@ -19,8 +19,9 @@ func _ready():
 
 	
 func begin_hunt():
-	ai.set_state(ai.State.HUNT)
-	HuntTimer.start()
+	if str(ai.State) != str(ai.State.ENGAGE):
+		ai.set_state(ai.State.HUNT)
+		HuntTimer.start()
 	
 func handle_hit():
 	enemyHealth.health-=20
@@ -39,4 +40,5 @@ func velocity_towards(location):
 
 
 func _on_HuntTimer_timeout():
-	ai.set_state(ai.State.PATROL)
+	if str(ai.State) != str(ai.State.ENGAGE):
+		ai.set_state(ai.State.PATROL)
