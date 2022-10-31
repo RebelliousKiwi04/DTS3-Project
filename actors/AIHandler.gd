@@ -19,6 +19,7 @@ var current_state = null setget set_state
 var player: Player = null
 var weapon: Weapon = null
 var actor: Enemy = null
+var pathfinding: pathfinding
 
 # PATROL STATE
 var origin: Vector2 = Vector2.ZERO

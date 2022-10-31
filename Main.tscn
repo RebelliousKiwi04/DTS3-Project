@@ -4,8 +4,8 @@
 [ext_resource path="res://assets/Tilesheet/tilesheet_complete.png" type="Texture" id=2]
 [ext_resource path="res://BulletManager.gd" type="Script" id=3]
 [ext_resource path="res://Main.gd" type="Script" id=4]
-[ext_resource path="res://actors/Enemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/GUI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://PathfindingHandler.gd" type="Script" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -607,11 +607,19 @@ position = Vector2( 418, 127 )
 current = true
 smoothing_enabled = true
 
-[node name="Enemy" parent="." instance=ExtResource( 5 )]
-position = Vector2( 13, -221 )
-
 [node name="BulletManager" type="Node2D" parent="."]
 position = Vector2( 34, -12 )
 script = ExtResource( 3 )
 
 [node name="GUI" parent="." instance=ExtResource( 6 )]
+
+[node name="PathfindingHandler" type="Node2D" parent="."]
+script = ExtResource( 7 )
+
+[node name="EnemySpawnPoints" type="Node2D" parent="."]
+
+[node name="Position2D" type="Position2D" parent="EnemySpawnPoints"]
+position = Vector2( 34, -216 )
+
+[node name="Position2D2" type="Position2D" parent="EnemySpawnPoints"]
+position = Vector2( 727, -267 )

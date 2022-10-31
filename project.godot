@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "Weapon",
 "language": "GDScript",
 "path": "res://weapons/Weapon.gd"
+}, {
+"base": "Node2D",
+"class": "pathfinding",
+"language": "GDScript",
+"path": "res://PathfindingHandler.gd"
 } ]
 _global_script_class_icons={
 "Bullet": "",
 "Enemy": "",
 "Player": "",
-"Weapon": ""
+"Weapon": "",
+"pathfinding": ""
 }
 
 [application]
