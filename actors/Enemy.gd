@@ -20,13 +20,11 @@ func _ready():
 	
 func begin_hunt():
 	if ai.current_state != ai.State.ENGAGE:
-		print("Changing AI state to hunt")
 		ai.set_state(ai.State.HUNT)
 		HuntTimer.start()
 	
 func handle_hit():
 	enemyHealth.health-=20
-	print("Enemy Hit!", enemyHealth.health)
 	if enemyHealth.health <=0:
 		emit_signal("enemyDied")
 		queue_free()
@@ -42,5 +40,4 @@ func velocity_towards(location):
 
 func _on_HuntTimer_timeout():
 	if ai.current_state != ai.State.ENGAGE:
-		print("Changing State to patrol")
 		ai.set_state(ai.State.PATROL)

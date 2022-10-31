@@ -72,9 +72,9 @@ custom_constants/separation = 30
 margin_right = 298.0
 margin_bottom = 54.0
 custom_fonts/font = ExtResource( 2 )
-text = " RETRY "
+text = "RETRY"
 
-[node name="MainMenuButton" type="Button" parent="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer"]
+[node name="MainMenuButton2" type="Button" parent="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer"]
 margin_top = 84.0
 margin_right = 298.0
 margin_bottom = 138.0
@@ -89,5 +89,5 @@ custom_fonts/font = ExtResource( 2 )
 text = " QUIT "
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer/RetryButton" to="." method="_on_RetryButton_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer/MainMenuButton2" to="." method="_on_MainMenuButton_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

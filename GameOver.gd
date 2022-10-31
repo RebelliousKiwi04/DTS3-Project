@@ -2,6 +2,7 @@ extends CanvasLayer
 
 onready var scoreLabel = $PanelContainer/MarginContainer/Rows/ScoreLabel
 
+#Loads and adds score to saved data
 func _ready():
 	var scoreFile = File.new()
 	scoreFile.open("user://high_scores.dat", File.READ)
@@ -15,13 +16,14 @@ func _ready():
 	scoreFile.store_var(scores)
 	scoreFile.close()
 
+#Reopens scene you just lost on
 func _on_RetryButton_pressed():
-	get_tree().change_scene("res://Main.tscn")
+	get_tree().change_scene(globals.used_map)
 
-
+#Quits Game
 func _on_QuitButton_pressed():
 	get_tree().quit()
 
-
+#Takes you back to main menu
 func _on_MainMenuButton_pressed():
 	get_tree().change_scene("res://MainMenuScreen.tscn")
