@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://roboto54.tres" type="DynamicFont" id=1]
 [ext_resource path="res://roboto36.tres" type="DynamicFont" id=2]
 [ext_resource path="res://UI/HelpScreen.gd" type="Script" id=3]
+[ext_resource path="res://roboto24.tres" type="DynamicFont" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.25098 )
@@ -31,21 +32,21 @@ margin_right = 1024.0
 margin_bottom = 600.0
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
-margin_left = 157.0
-margin_top = 101.0
-margin_right = 867.0
-margin_bottom = 498.0
+margin_left = 285.0
+margin_top = 59.0
+margin_right = 739.0
+margin_bottom = 540.0
 custom_styles/panel = SubResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
 margin_left = 3.0
 margin_top = 3.0
-margin_right = 707.0
-margin_bottom = 394.0
+margin_right = 451.0
+margin_bottom = 478.0
 custom_constants/separation = 25
 
 [node name="Label" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer"]
-margin_right = 704.0
+margin_right = 448.0
 margin_bottom = 86.0
 custom_fonts/font = ExtResource( 1 )
 text = " CONTROLS "
@@ -53,23 +54,27 @@ align = 1
 
 [node name="Controls Label" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer"]
 margin_top = 111.0
-margin_right = 704.0
-margin_bottom = 312.0
-custom_fonts/font = ExtResource( 2 )
+margin_right = 448.0
+margin_bottom = 396.0
+custom_fonts/font = ExtResource( 4 )
 text = "RMB: Shoot Weapon
 ESC: Pause
 R: Reload Wepaon
+Move Up: W/Up Arrow
+Move Down: S/Down Arrow
+Move Left: A/Left Arrow
+Move Right: D/Right Arrow
 Mouse Position: Player Direction"
 align = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
-margin_top = 337.0
-margin_right = 704.0
-margin_bottom = 391.0
+margin_top = 421.0
+margin_right = 448.0
+margin_bottom = 475.0
 
 [node name="Button" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/CenterContainer"]
-margin_left = 269.0
-margin_right = 435.0
+margin_left = 141.0
+margin_right = 307.0
 margin_bottom = 54.0
 custom_fonts/font = ExtResource( 2 )
 text = " CLOSE "
